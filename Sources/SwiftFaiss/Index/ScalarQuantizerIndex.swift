@@ -13,8 +13,8 @@ public final class ScalarQuantizerIndex: BaseIndex {
         self.indexPointer = indexPointer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> ScalarQuantizerIndex? {
-        faiss_IndexScalarQuantizer_cast(indexPointer.pointer) == nil ? nil : ScalarQuantizerIndex(indexPointer: indexPointer)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexScalarQuantizer_cast(indexPointer.pointer) == nil ? nil : ScalarQuantizerIndex(indexPointer: indexPointer) as? Self
     }
 
     public convenience init(d: Int, quantizerType: QuantizerType, metricType: MetricType) throws {

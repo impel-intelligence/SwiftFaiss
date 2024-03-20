@@ -21,8 +21,8 @@ public final class IDMap2: BaseIndex {
         self.subIndex = subIndex
     }
 
-    static func from(_ indexPointer: IndexPointer) -> IDMap2? {
-        faiss_IndexIDMap2_cast(indexPointer.pointer) == nil ? nil : IDMap2(indexPointer: indexPointer, subIndex: nil)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexIDMap2_cast(indexPointer.pointer) == nil ? nil : IDMap2(indexPointer: indexPointer, subIndex: nil) as? Self
     }
 
     public convenience init(subIndex: any BaseIndex) throws {

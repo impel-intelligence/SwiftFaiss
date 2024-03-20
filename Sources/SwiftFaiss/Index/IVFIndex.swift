@@ -13,8 +13,8 @@ public final class IVFIndex: BaseIndex {
         self.indexPointer = indexPointer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> IVFIndex? {
-        faiss_IndexIVF_cast(indexPointer.pointer) == nil ? nil : IVFIndex(indexPointer: indexPointer)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexIVF_cast(indexPointer.pointer) == nil ? nil : IVFIndex(indexPointer: indexPointer) as? Self
     }
 
     public var nprobe: Int {

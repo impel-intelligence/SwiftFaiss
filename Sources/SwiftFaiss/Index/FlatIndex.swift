@@ -13,8 +13,8 @@ public final class FlatIndex: BaseIndex {
         self.indexPointer = indexPointer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> FlatIndex? {
-        faiss_IndexFlat_cast(indexPointer.pointer) == nil ? nil : FlatIndex(indexPointer: indexPointer)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexFlat_cast(indexPointer.pointer) == nil ? nil : FlatIndex(indexPointer: indexPointer) as? Self
     }
 
     public convenience init(d: Int, metricType: MetricType) throws {

@@ -9,6 +9,8 @@ public protocol BaseIndex {
     var metricType: MetricType { get }
     var verbose: Bool { get set }
 
+    static func from(_ indexPointer: IndexPointer) -> Self?
+
     func add(_ xs: [[Float]]) throws
     func add(_ xs: [[Float]], ids: [Int]) throws
     func assign(_ xs: [[Float]], k: Int) throws -> [[Int]]

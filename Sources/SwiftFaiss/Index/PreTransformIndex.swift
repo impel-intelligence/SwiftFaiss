@@ -42,6 +42,10 @@ public final class PreTransformIndex: BaseIndex {
             vectorTransforms: [vectorTransform]
         )
     }
+    
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexPreTransform_cast(indexPointer.pointer) == nil ? nil : PreTransformIndex(indexPointer: indexPointer, subIndex: nil, vectorTransforms: []) as? Self
+    }
 
     public func prepend(vectorTransform: any BaseVectorTransform) throws {
         try IndexError.check(

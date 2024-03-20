@@ -16,9 +16,9 @@ public final class IVFFlatIndex: BaseIndex {
         self.quantizer = quantizer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> IVFFlatIndex? {
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
         faiss_IndexIVFFlat_cast(indexPointer.pointer) == nil ?
-            nil : IVFFlatIndex(indexPointer: indexPointer, quantizer: nil)
+        nil : IVFFlatIndex(indexPointer: indexPointer, quantizer: nil) as? Self
     }
 
     public convenience init(quantizer: FlatIndex, d: Int, nlist: Int) throws {

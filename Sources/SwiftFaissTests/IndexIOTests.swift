@@ -13,7 +13,7 @@ final class IndexIOTests: XCTestCase {
         let index = try AnyIndex(d: 4, metricType: .l2, description: "Flat")
 
         try index.saveToFile(fileURL.path)
-        let loadedIndex = try loadFromFile(fileURL.path)
+        let loadedIndex: AnyIndex = try loadFromFile(fileURL.path)
         XCTAssertEqual(loadedIndex.count, 0)
     }
 
@@ -26,7 +26,7 @@ final class IndexIOTests: XCTestCase {
         ])
 
         try index.saveToFile(fileURL.path)
-        let loadedIndex = try loadFromFile(fileURL.path)
+        let loadedIndex: AnyIndex = try loadFromFile(fileURL.path)
         XCTAssertEqual(loadedIndex.count, 3)
     }
 
@@ -39,7 +39,7 @@ final class IndexIOTests: XCTestCase {
         ])
 
         try index.saveToFile(fileURL.path)
-        let loadedIndex = try loadFromFile(fileURL.path, ioFlag: .mmap)
+        let loadedIndex: AnyIndex = try loadFromFile(fileURL.path, ioFlag: .mmap)
         XCTAssertEqual(loadedIndex.count, 3)
     }
 }

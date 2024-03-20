@@ -16,8 +16,8 @@ public final class RefineFlatIndex: BaseIndex {
         self.baseIndex = baseIndex
     }
 
-    static func from(_ indexPointer: IndexPointer) -> RefineFlatIndex? {
-        faiss_IndexRefineFlat_cast(indexPointer.pointer) == nil ? nil : RefineFlatIndex(indexPointer: indexPointer, baseIndex: nil)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexRefineFlat_cast(indexPointer.pointer) == nil ? nil : RefineFlatIndex(indexPointer: indexPointer, baseIndex: nil) as? Self
     }
 
     public convenience init(baseIndex: any BaseIndex) throws {

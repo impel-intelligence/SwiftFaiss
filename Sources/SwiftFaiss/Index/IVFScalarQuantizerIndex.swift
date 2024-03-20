@@ -16,9 +16,9 @@ public class IVFScalarQuantizerIndex: BaseIndex {
         self.quantizer = quantizer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> IVFScalarQuantizerIndex? {
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
         faiss_IndexIVFScalarQuantizer_cast(indexPointer.pointer) == nil ?
-            nil : IVFScalarQuantizerIndex(indexPointer: indexPointer, quantizer: nil)
+            nil : IVFScalarQuantizerIndex(indexPointer: indexPointer, quantizer: nil) as? Self
     }
 
     public convenience init(

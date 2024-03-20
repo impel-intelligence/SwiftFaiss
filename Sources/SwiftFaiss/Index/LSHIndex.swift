@@ -13,8 +13,8 @@ public final class LSHIndex: BaseIndex {
         self.indexPointer = indexPointer
     }
 
-    static func from(_ indexPointer: IndexPointer) -> LSHIndex? {
-        faiss_IndexLSH_cast(indexPointer.pointer) == nil ? nil : LSHIndex(indexPointer: indexPointer)
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        faiss_IndexLSH_cast(indexPointer.pointer) == nil ? nil : LSHIndex(indexPointer: indexPointer) as? Self
     }
 
     public convenience init(d: Int, nbits: Int) throws {

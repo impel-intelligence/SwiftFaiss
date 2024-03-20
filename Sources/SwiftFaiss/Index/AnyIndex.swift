@@ -32,6 +32,11 @@ public final class AnyIndex: BaseIndex {
         )
         self.init(indexPointer: IndexPointer(indexPtr.pointee!))
     }
+    
+    public static func from(_ indexPointer: IndexPointer) -> Self? {
+        AnyIndex(indexPointer: indexPointer) as? Self
+    }
+
 }
 
 extension AnyIndex {
