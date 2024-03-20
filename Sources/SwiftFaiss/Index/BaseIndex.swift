@@ -10,6 +10,7 @@ public protocol BaseIndex {
     var verbose: Bool { get set }
 
     static func from(_ indexPointer: IndexPointer) -> Self?
+    static func from(_ path: String, ioFlag: IOFlag) throws -> Self
 
     func add(_ xs: [[Float]]) throws
     func add(_ xs: [[Float]], ids: [Int]) throws
@@ -51,6 +52,21 @@ extension BaseIndex {
         set {
             faiss_Index_set_verbose(indexPointer.pointer, newValue ? 1 : 0)
         }
+    }
+    
+    public static func from(_ path: String, ioFlag: IOFlag = .readOnly) throws -> Self {
+        let indexPtr = UnsafeMutablePointer<OpaquePointer?>.allocate(capacity: 1)
+        defer { indexPtr.deallocate() }
+        try IndexError.check(
+            faiss_read_index_fname(path, ioFlag.faissIOFlag, indexPtr)
+        )
+        
+        let index = self.from(IndexPointer(indexPtr.pointee!))
+        guard let index else {
+            throw IOError.creationFailed
+        }
+        
+        return index
     }
 
     public func assign(_ xs: [[Float]], k: Int) throws -> [[Int]] {
