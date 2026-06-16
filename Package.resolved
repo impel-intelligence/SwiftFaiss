@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "faissmobile",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/impel-intelligence/FaissMobile",
+      "state" : {
+        "branch" : "main",
+        "revision" : "85206d043d299eab3be4e7f5bafc34ec27dce829"
+      }
+    }
+  ],
+  "version" : 2
+}
