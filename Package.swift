@@ -14,7 +14,7 @@ let package = Package(
         .library(name: "SwiftFaiss", targets: ["SwiftFaiss"])
     ],
     dependencies: [
-        .package(url: "https://github.com/impel-intelligence/FaissMobile", branch: "main")
+        .package(url: "https://github.com/impel-intelligence/FaissMobile", from: "0.0.2")
     ],
     targets: [
         .target(
