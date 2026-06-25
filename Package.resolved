@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/impel-intelligence/FaissMobile",
       "state" : {
-        "branch" : "main",
-        "revision" : "85206d043d299eab3be4e7f5bafc34ec27dce829"
+        "revision" : "ccdc8800b8521d9246c90b5ed47ba867a89706e3",
+        "version" : "1.0.0"
       }
     }
   ],
